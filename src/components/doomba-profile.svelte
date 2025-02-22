@@ -1,14 +1,15 @@
-<script>
+<script lang="ts">
     import "../app.css"
 
-    function goToNewPage(){
-        window.location.href = '../order/+page.svelte'
-    }
+    /*function goToNewPage(){
+        window.location.href = "./order/+page.svelte"
+    }*/
+
 </script>
 
 
 <div class="flex justify-center text-4xl">
-    <h1 class="doomba">
+    <h1 class="doomba-title">
         Doomba v.1
     </h1>
     
@@ -20,42 +21,37 @@
     </h1>
 </div>
 
-<div>
-    <img class="doomba" src="roomba.jpg" alt="roomba(good)">
+<div class="container">
+    <img class="doomba" src="doomba.png" alt="roomba(good)">
 </div>
 
 <div class="flex justify-center">
-    <button on:click={goToNewPage} class="btn-17">
+    <button class="btn-17">
         <span class="text-container">
-          <span class="text">Button</span>
+          <span class="text">Order Now</span>
         </span>
     </button>
-</div>
+  </div>
 
 <style lang="postcss">
     @reference "tailwindcss/theme";
 
-    div:has(.doomba) {
-        /*background-color: theme(--color-red-100); */
-    }
-    :global(html){
-        font-family: Roboto;
-        background-color: rgb(255, 63, 63);
+    div:has(.doomba-title) {
+        font-weight: bold;
     }
     :has(img){
         display: block;
         margin: auto;
-        width: 50%;
+        width: 100%;
+        height: auto;
+        padding-bottom: 10%;
+        border-width: 4px;
+        border-image: linear-gradient(to right, black, red) 1;
     }
 
-.btn-17,
-.btn-17 *,
-.btn-17 :after,
-.btn-17 :before,
-.btn-17:after,
-.btn-17:before {
-  border: 0 solid;
-  box-sizing: border-box;
+.container {
+  width: 500px;
+  height: 240px;
 }
 
 .btn-17 {
@@ -77,14 +73,9 @@
   text-transform: uppercase;
 }
 
-.btn-17:disabled {
-  cursor: default;
-}
-
 .btn-17:-moz-focusring {
   outline: auto;
 }
-
 
 .btn-17 {
   border-radius: 99rem;
@@ -109,6 +100,18 @@
   position: relative;
 }
 
+.btn-17:hover {
+  animation: moveAway 0.5s forwards; /* The 'forwards' keeps the new position */
+}
+
+@keyframes moveAway {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(500px, -200px); }
+  50% { transform: translate(-800px, 400px); }
+  75% { transform: translate(300px, -500px); }
+  100% { transform: translate(1000px, 500px); }
+}
+/*
 .btn-17:hover .text {
   -webkit-animation: move-up-alternate 0.3s forwards;
   animation: move-up-alternate 0.3s forwards;
@@ -150,10 +153,11 @@
   }
 }
 
+
 .btn-17:after,
 .btn-17:before {
-  --skew: 0.2;
-  background: #fff;
+  --skew: 0.2;  
+  background: #a79696;
   content: "";
   display: block;
   height: 102%;
@@ -180,5 +184,5 @@
 .btn-17:hover:after {
   --progress: -102%;
 }
-
+*/
 </style>
