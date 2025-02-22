@@ -51,4 +51,5 @@
     div:has(.image-container){
         background: linear-gradient(to right, rgb(27, 231, 27), rgb(255, 0, 0));
     }
+
 </style>
